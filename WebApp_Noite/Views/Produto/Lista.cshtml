@@ -1,4 +1,6 @@
-﻿  <div class="col-12">
+﻿@model List<WebApp_Noite.Models.ProdutoModel>
+
+  <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <h2>Lista de Produtos</h2>
@@ -42,53 +44,28 @@
                         <tr>
                             <th>Codigo</th>
                             <th>Nome</th>
-                            <th>Qtd em Estoque</th>
-                            <th></th>
+                            <th>Qtd em Estoque</th>                           
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach (var Produto in Model)
+                    {
                         <tr>
-                            <td>1</td>
-                            <td>Mouse Gamer</td>
-                            <td>150</td>
+                            <td>@Produto.Id</td>
+                            <td>@Produto.Nome</td>
+                            <td>@Produto.Estoque</td>
                             <td>
-                                <a href="/Produto/Editar/1" class="btn btn-warning" >
+                                <a href="/Cliente/Editar/@Produto.Id"
+                                   class="btn btn-warning">
                                     Editar
                                 </a>
-                                <a href="/Produto/Excluir/1" class="btn btn-danger" >
-                                Excluir    
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Teclado Gamer</td>
-                            <td>250</td>
-                            <td>
-                                <a href="/Produto/Editar/2" class="btn btn-warning">
-                                    Editar
-                                </a>
-                                <a href="/Produto/Excluir/2" class="btn btn-danger">
+                                <a href="/Cliente/Editar/@Produto.Id"
+                                   class="btn btn-danger">
                                     Excluir
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Monitor Gamer</td>
-                            <td>350</td>
-                            <td>
-                                <a href="/Produto/Editar/3" class="btn btn-warning">
-                                    Editar
-                                </a>
-                                <a href="/Produto/Excluir/3" class="btn btn-danger">
-                                    Excluir
-                                </a>
-                            </td>
-                        </tr>
-
-
-
+                    }
                     </tbody>
                 </table>
 

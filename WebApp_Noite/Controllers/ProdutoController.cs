@@ -1,16 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp_Noite.Models;
 
 namespace WebApp_Noite.Controllers
 {
     public class ProdutoController : Controller
     {
+        public static List<ProdutoModel> pl = new List<ProdutoModel>();
         public IActionResult Lista()
         {
-            return View();
+            return View( pl );
         }
         public IActionResult Cadastrar()
         {
-            return View();
+            ProdutoModel modelL = new ProdutoModel();
+            return View( modelL );
+        }
+        [HttpPost]
+        public IActionResult SalvarDados(ProdutoModel Produto)
+        {
+            if (Produto.Id == 0)
+            {
+                Random rand = new Random();
+
+                Produto.Id = rand.Next(1, 9999);
+                pl.Add(Produto);
+            }
+            return RedirectToAction("Lista");
         }
     }
 }
+    
+
