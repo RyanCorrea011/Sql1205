@@ -5,9 +5,10 @@ namespace WebApp_Noite.Controllers
 {
     public class ClienteController : Controller
     {
+        public static List<ClientesModel> db = new List<ClientesModel>();
         public IActionResult Lista()
         {
-            return View();
+            return View( db );
         }
         public IActionResult Cadastrar()
         {
@@ -22,6 +23,7 @@ namespace WebApp_Noite.Controllers
                 Random rand = new Random();
 
                 cliente.Id = rand.Next(1,9999);
+                db.Add(cliente);
             }
             return RedirectToAction("Lista");
         }
