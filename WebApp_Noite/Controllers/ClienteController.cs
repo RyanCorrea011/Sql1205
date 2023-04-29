@@ -25,7 +25,31 @@ namespace WebApp_Noite.Controllers
                 cliente.Id = rand.Next(1,9999);
                 db.Add(cliente);
             }
+
             return RedirectToAction("Lista");
+        }
+        public IActionResult Excluir(int id)
+        {
+            ClientesModel item = db.Find(a => a.Id == id);
+            if(item != null)
+            {
+                db.Remove(item);
+            }
+            return RedirectToAction("Lista");
+        }
+
+        public IActionResult Editar(int id) 
+        {
+            ClientesModel item = db.Find(a =>a.Id == id);
+            if(item != null)
+            {
+                return View( item ) ;
+
+            } 
+            else 
+            { 
+                return RedirectToAction("lista");
+            }
         }
     }
 }

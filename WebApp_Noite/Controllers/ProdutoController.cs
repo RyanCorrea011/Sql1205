@@ -27,6 +27,28 @@ namespace WebApp_Noite.Controllers
             }
             return RedirectToAction("Lista");
         }
+        public IActionResult Excluir(int id)
+        {
+            ProdutoModel itemP = pl.Find(a => a.Id == id);
+            if (itemP != null)
+            {
+                pl.Remove(itemP);
+            }
+            return RedirectToAction("Lista");
+        }
+        public IActionResult Editar(int id)
+        {
+            ProdutoModel itemP = pl.Find(a => a.Id == id);
+            if (itemP != null)
+            {
+                return View(itemP);
+
+            }
+            else
+            {
+                return RedirectToAction("lista");
+            }
+        }
     }
 }
     
