@@ -28,6 +28,7 @@ namespace WebApp_Noite.Controllers
             else
             {
                 int indice = pl.FindIndex(a => a.Id == Produto.Id);
+                pl[indice] = Produto;
             }
             return RedirectToAction("Lista");
         }
