@@ -25,6 +25,10 @@ namespace WebApp_Noite.Controllers
                 cliente.Id = rand.Next(1,9999);
                 db.Add(cliente);
             }
+            else
+            {
+                int indice = db.FindIndex(a => a.Id == cliente.Id);
+            }
 
             return RedirectToAction("Lista");
         }

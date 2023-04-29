@@ -25,6 +25,10 @@ namespace WebApp_Noite.Controllers
                 Produto.Id = rand.Next(1, 9999);
                 pl.Add(Produto);
             }
+            else
+            {
+                int indice = pl.FindIndex(a => a.Id == Produto.Id);
+            }
             return RedirectToAction("Lista");
         }
         public IActionResult Excluir(int id)
