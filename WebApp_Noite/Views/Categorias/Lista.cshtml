@@ -1,0 +1,29 @@
+﻿@model List<WebApp_Noite.Tabelas.Categorias>
+
+ <table class="table table-striped">
+     <thead>
+         <tr>
+             <th>Id</th>
+             <th>Nome</th>
+             <th>Ativo</th>
+             <th></th>
+         </tr>
+     </thead>
+     <tbody>
+        @foreach(var categorias in Model)
+        {
+            <tr>
+                <td>@categorias.Id</td>
+                <td>@categorias.nome</td>
+                <td>@if(categorias.Ativo ==true){
+                        <input type="checkbox" checked />
+
+                    }else
+                    {
+                        <input type="checkbox" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+ </table>
